@@ -18,12 +18,12 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 class HelloControllerTest {
 
     @Autowired
-    private val mvc: MockMvc? = null
+    private lateinit var mvc: MockMvc
 
     @Test
     @Throws(Exception::class)
     fun getHello() {
-        mvc!!.perform(MockMvcRequestBuilders.get("/greeting").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(MockMvcRequestBuilders.get("/greeting").accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk)
                 .andExpect(MockMvcResultMatchers.content().string(Matchers.equalTo("{\"id\":1,\"content\":\"Hello, World\"}")))
     }

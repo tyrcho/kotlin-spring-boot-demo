@@ -19,10 +19,10 @@ class HelloControllerIT {
     @LocalServerPort
     private val port: Int = 0
 
-    private var base: URL? = null
+    private lateinit var base: URL
 
     @Autowired
-    private val template: TestRestTemplate? = null
+    private lateinit var template: TestRestTemplate
 
     @Before
     fun setUp() {
@@ -31,7 +31,7 @@ class HelloControllerIT {
 
     @Test
     fun getHello() {
-        val response = template!!.getForEntity(base!!.toString(), String::class.java)
+        val response = template.getForEntity(base.toString(), String::class.java)
         Assert.assertThat(response.body, Matchers.equalTo("{\"id\":1,\"content\":\"Hello, World\"}"))
     }
 }
