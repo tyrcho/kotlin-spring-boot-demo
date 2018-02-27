@@ -23,8 +23,8 @@ class HelloControllerTest {
     @Test
     @Throws(Exception::class)
     fun getHello() {
-        mvc!!.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
+        mvc!!.perform(MockMvcRequestBuilders.get("/greeting").accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk)
-                .andExpect(MockMvcResultMatchers.content().string(Matchers.equalTo("Greetings from Spring Boot!")))
+                .andExpect(MockMvcResultMatchers.content().string(Matchers.equalTo("{\"id\":1,\"content\":\"Hello, World\"}")))
     }
 }

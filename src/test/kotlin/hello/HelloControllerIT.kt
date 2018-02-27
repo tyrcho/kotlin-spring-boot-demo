@@ -25,15 +25,13 @@ class HelloControllerIT {
     private val template: TestRestTemplate? = null
 
     @Before
-    @Throws(Exception::class)
     fun setUp() {
-        this.base = URL("http://localhost:$port/")
+        this.base = URL("http://localhost:$port/greeting")
     }
 
     @Test
     fun getHello() {
-        val response = template!!.getForEntity(base!!.toString(),
-                String::class.java)
-        Assert.assertThat(response.body, Matchers.equalTo("Greetings from Spring Boot!"))
+        val response = template!!.getForEntity(base!!.toString(), String::class.java)
+        Assert.assertThat(response.body, Matchers.equalTo("{\"id\":1,\"content\":\"Hello, World\"}"))
     }
 }
