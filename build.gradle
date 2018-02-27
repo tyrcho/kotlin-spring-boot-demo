@@ -2,6 +2,7 @@ buildscript {
     ext.kotlin_version = '1.2.21' // Required for Kotlin integration
 
     repositories {
+//        jcenter()
         mavenCentral()
     }
     dependencies {
@@ -11,6 +12,7 @@ buildscript {
         // See https://kotlinlang.org/docs/reference/compiler-plugins.html#kotlin-spring-compiler-plugin
 
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.10.RELEASE")
+//        classpath "io.spring.gradle:dependency-management-plugin:0.5.1.RELEASE"
     }
 }
 
@@ -20,6 +22,7 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'kotlin' // Required for Kotlin integration
 apply plugin: "kotlin-spring" // See https://kotlinlang.org/docs/reference/compiler-plugins.html#kotlin-spring-compiler-plugin
+//apply plugin: "io.spring.dependency-management"
 
 jar {
     baseName = 'gs-spring-boot'
@@ -28,10 +31,18 @@ jar {
 
 repositories {
     mavenCentral()
+//    jcenter()
 }
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
+
+//dependencyManagement {
+//    imports {
+//        mavenBom 'io.spring.platform:platform-bom:1.1.5.RELEASE'
+//        mavenBom 'io.spring.platform:platform-bom:2.0.8.RELEASE'
+//    }
+//}
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version" // Required for Kotlin integration
